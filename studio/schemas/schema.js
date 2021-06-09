@@ -6,7 +6,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // Then import our schema
 import partner from './partner'
-import homePage from './home-page'
+import homePage from './homePage'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
