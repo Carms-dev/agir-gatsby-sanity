@@ -4,9 +4,16 @@ import createSchema from 'part:@sanity/base/schema-creator'
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
-// Then import our schema
+// import documents to schema
 import partner from './partner'
 import homePage from './homePage'
+
+// import objects to schema
+import hero from './components/hero'
+import imageBlock from './objects/imageBlock'
+
+// import section objects to schema
+import homeSections from './components/homeSections'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -15,8 +22,12 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    /* Your types here! */
+    /* Doc types here! */
     homePage,
     partner,
+    /* Object types here! */
+    hero,
+    imageBlock,
+    homeSections,
   ]),
 })

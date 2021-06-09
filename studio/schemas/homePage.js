@@ -9,6 +9,9 @@ export default {
   title: 'Home Pages',
   type: 'document',
   icon,
+  initialValue: async () => ({
+
+  }),
   fields: [
     {
       name: 'language',
@@ -53,25 +56,8 @@ export default {
     {
       name: 'sections',
       title: 'Sections',
-      type: 'object',
-      options: {
-        collapsible: true,
-        collapsed: false,
-      },
-      fields: [
-        {
-          name: 'hero',
-          title: 'Hero Section',
-          type: 'object',
-          options: {collapsible: true},
-          fields: [
-            {name: 'heading', title: 'Heading', type: 'string'},
-            {name: 'description', title: 'Description', type: 'text'},
-          ]
-        },
-      ]
+      type: 'homeSections',
     }
-
   ],
   preview: {
     select: {

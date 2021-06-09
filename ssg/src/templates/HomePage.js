@@ -5,12 +5,14 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const IndexPage = ({ data: { sanityHomePages: { title, sections } } }) => {
-  const { hero } = sections 
+const HomepageTemplate = ({ data: { sanityHomePages: { title, sections } } }) => {
+  const { hero } = sections
+
   return (
     <Layout>
     <Seo title={title} />
     <h1>{hero.heading}</h1>
+    <p>{hero.description}</p>
     <StaticImage
       src="../images/gatsby-astronaut.png"
       width={300}
@@ -26,16 +28,15 @@ const IndexPage = ({ data: { sanityHomePages: { title, sections } } }) => {
   </Layout>
   )
 }
-  
 
-
-export default IndexPage
+export default HomepageTemplate
 
 
 export const query = graphql`
-  query {
-    sanityHomePages(language: {eq: "en"}) {
+  query($language: String) {
+    sanityHomePages(language: { eq: $language }) {
       language
+      title
       sections {
         hero {
           description
@@ -48,7 +49,6 @@ export const query = graphql`
           }
         }
       }
-      title
     }
   }
 `
