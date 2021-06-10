@@ -2,7 +2,7 @@ export default {
   name: 'hero',
   title: 'Hero Section',
   type: 'object',
-  options: {collapsible: true},
+  options: {collapsible: true, collapsed: false},
   fields: [
     {name: 'heading', title: 'Heading', type: 'string'},
     {name: 'description', title: 'Description', type: 'text'},

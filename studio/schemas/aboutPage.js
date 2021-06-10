@@ -1,9 +1,9 @@
-import { AiOutlineHome as icon } from 'react-icons/ai'
+import { FaRainbow as icon } from 'react-icons/fa'
 import React from 'react' 
 
 export default {
-  name: 'homePages',
-  title: 'Home Pages',
+  name: 'aboutPages',
+  title: 'About Pages',
   type: 'document',
   icon,
   fields: [
@@ -32,7 +32,7 @@ export default {
     {
       name: 'sections',
       title: 'Sections',
-      type: 'homeSections',
+      type: 'aboutSections',
     }
   ],
   preview: {
