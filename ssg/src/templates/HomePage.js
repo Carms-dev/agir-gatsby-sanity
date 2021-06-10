@@ -1,36 +1,22 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from "react"
+import { Link } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../components/Layout"
+import Seo from "../components/Seo"
+import Hero from "../components/Hero"
 
-const HomepageTemplate = ({ data: { sanityHomePages: { title, sections } } }) => {
+export default function HomepageTemplate({ data: { sanityHomePages: { title, sections } } }) {
   const { hero } = sections
 
   return (
     <Layout>
-    <Seo title={title} />
-    <h1>{hero.heading}</h1>
-    <p>{hero.description}</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
+      <Seo title={title} />
+      <Hero hero={hero}/>
+      <Link to="/">Go back to Landing</Link>
+    </Layout>
   )
 }
-
-export default HomepageTemplate
-
 
 export const query = graphql`
   query($language: String) {
@@ -39,11 +25,15 @@ export const query = graphql`
       title
       sections {
         hero {
-          description
           heading
+          description
           featuredImage {
             asset {
-              gatsbyImageData
+              gatsbyImageData(
+                width: 590
+                placeholder: BLURRED
+                layout: CONSTRAINED
+              )
               altText
             }
           }
