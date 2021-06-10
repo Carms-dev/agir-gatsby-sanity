@@ -12,11 +12,11 @@ export default {
       { title: 'Spanish', value: 'es' }
     ]
   },
-  validation: Rule => Rule.required().custom((language) => {
-    return client.fetch(`count(*[_type == "homePage" && language == "${language}"])`)
+  validation: Rule => Rule.required().custom((language, context) => {
+    return client.fetch(`count(*[_type == "${context.document._type}" && language == "${language}"])`)
       .then(count => {
         if (count > 1) {
-          return 'Only one page per language is allowed. Edit existing please.'
+          return `Only one ${context.document._type} per language is allowed. Edit existing please.`
         } else {
           return true
         }

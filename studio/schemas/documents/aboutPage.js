@@ -2,8 +2,8 @@ import { FaRainbow as icon } from 'react-icons/fa'
 import React from 'react' 
 
 export default {
-  name: 'aboutPages',
-  title: 'About Pages',
+  name: 'aboutPage',
+  title: 'About Page',
   type: 'document',
   icon,
   fields: [

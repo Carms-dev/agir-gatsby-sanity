@@ -2,8 +2,8 @@ import { AiOutlineHome as icon } from 'react-icons/ai'
 import React from 'react' 
 
 export default {
-  name: 'homePages',
-  title: 'Home Pages',
+  name: 'homePage',
+  title: 'Home Page',
   type: 'document',
   icon,
   fields: [
