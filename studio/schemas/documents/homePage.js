@@ -8,6 +8,12 @@ export default {
   icon,
   fields: [
     {
+      name: 'templateKey',
+      title: 'Template Key',
+      type: 'string',
+      hidden: true,
+    },
+    {
       name: 'language',
       title: 'Language',
       type: 'locale',
@@ -35,6 +41,9 @@ export default {
       type: 'homeSections',
     }
   ],
+  initialValue: {
+    templateKey: 'homePage'
+  },
   preview: {
     select: {
       title: 'title',

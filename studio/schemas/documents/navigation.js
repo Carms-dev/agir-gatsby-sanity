@@ -14,18 +14,11 @@ export default {
     },
     {
       name: 'navItems',
-      title: 'Nav Items',
-      description: 'Ordered list of links to Home Page for each languages',
+      title: 'Navigation Items',
       type: 'array',
       of: [{
-        type: 'internalLink'
+        type: 'pageLink'
       }],
-      // of: [{
-      //   type: 'reference',
-      //   to: [
-      //     {type: 'homePages'}
-      //   ]
-      // }],
       validation: Rule => Rule.unique()
     },
   ],

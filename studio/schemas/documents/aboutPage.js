@@ -6,7 +6,16 @@ export default {
   title: 'About Page',
   type: 'document',
   icon,
+  initialValue: {
+    'templateKey': 'aboutPage'
+  },
   fields: [
+    {
+      name: 'templateKey',
+      title: 'Template Key',
+      type: 'string',
+      hidden: true,
+    },
     {
       name: 'language',
       title: 'Language',

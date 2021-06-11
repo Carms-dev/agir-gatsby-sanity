@@ -1,6 +1,6 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-// import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Logo from "./Logo"
 import SideDrawer from "./SideDrawer"
@@ -25,13 +25,42 @@ const useStyles = makeStyles({
   }
 });
 
-const Header = () => {
+const Header = ({language}) => {
   const classes = useStyles();
-  
-  const navLinks = [
-    { title: `About Us`, path: `/about` },
-    { title: `Contact`, path: `/contact` },
-  ]
+
+  const data = useStaticQuery(graphql`
+    query MyQuery {
+      allSanityNavigation {
+        nodes {
+          language
+          navItems {
+            label
+            pageLink {
+              ... on SanityAboutPage {
+                id
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityHomePage {
+                id
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language )
+  const navLinks = navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
 
   return (
     <AppBar position="static" style={{ background: `var(--off-white)` }}>
@@ -47,11 +76,11 @@ const Header = () => {
               className={classes.navDisplayFlex}
             >
               {navLinks.map(({ title, path }) => (
-                <a href={path} key={title} className={classes.linkText}>
+                <Link href={path} key={title} className={classes.linkText}>
                   <ListItem button>
                     <ListItemText primary={title} />
                   </ListItem>
-                </a>
+                </Link>
               ))}
             </List>
           </Hidden>

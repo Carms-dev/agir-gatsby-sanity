@@ -1,56 +1,55 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-// import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 
-const IndexPage = ({ data: { sanityHomePages: { title, sections } } }) => {
-  const { hero } = sections 
+export default function IndexPage({ data: { sanityLandingPage: { title, featuredImage, languageHomeLinks } } }) {
+  const langNames = {
+    ar: 'ﺎﻨﻫ ﻞﺧدأ',
+    en: 'English',
+    fr: 'Français',
+    es: 'Espagñol'
+  }
   return (
     <Layout>
-    <Seo title={title} />
-    <h1>{hero.heading}</h1>
-    {/* <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    /> */}
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/en/home">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-
-  </Layout>
+      <Seo title={title} />
+      <h1>{title}</h1>
+      <GatsbyImage
+        image={featuredImage.asset.gatsbyImageData}
+        alt={featuredImage.alt}
+        imgStyle={{ height: `auto` }} />
+      <ul>
+        {languageHomeLinks.map(({title, language, slug}) => (
+          <li key={language}><Link to={`/${language}/${slug.current}`}>{langNames[language]}</Link></li>
+        ))}
+      </ul>
+    </Layout>
   )
 }
-  
-
-
-export default IndexPage
-
 
 export const query = graphql`
   query {
-    sanityHomePages(language: {eq: "en"}) {
-      language
-      sections {
-        hero {
-          description
-          heading
-          featuredImage {
-            asset {
-              gatsbyImageData
-              altText
-            }
-          }
+    sanityLandingPage {
+      title
+      featuredImage {
+        alt
+        asset {
+          gatsbyImageData (
+            width: 600
+            placeholder: BLURRED
+            layout: CONSTRAINED
+          )
         }
       }
-      title
+      languageHomeLinks {
+        title
+        slug {
+          current
+        }
+        language
+      }
     }
   }
 `

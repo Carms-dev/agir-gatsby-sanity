@@ -21,6 +21,7 @@ import internalLink from './components/internalLink'
 import homeSections from './objects/homeSections'
 import aboutSections from './objects/aboutSections'
 import hero from './objects/hero'
+import pageLink from './objects/pageLink'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -48,6 +49,7 @@ export default createSchema({
     imageBlock,
     internalLink,
     locale,
+    pageLink,
 
     // General Settings
     siteSettings,

@@ -6,11 +6,11 @@ import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Hero from "../components/Hero"
 
-export default function HomepageTemplate({ data: { sanityHomePages: { title, sections } } }) {
+export default function HomepageTemplate({ data: { sanityHomePage: { language, title, sections } } }) {
   const { hero } = sections
 
   return (
-    <Layout>
+    <Layout language={language}>
       <Seo title={title} />
       <Hero hero={hero}/>
       <Link to="/">Go back to Landing</Link>
@@ -20,7 +20,7 @@ export default function HomepageTemplate({ data: { sanityHomePages: { title, sec
 
 export const query = graphql`
   query($language: String) {
-    sanityHomePages(language: { eq: $language }) {
+    sanityHomePage(language: { eq: $language }) {
       language
       title
       sections {

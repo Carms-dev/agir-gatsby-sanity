@@ -9,7 +9,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import Typography from "../styles/Typography"
 
-const Layout = ({ children }) => {
+const Layout = ({ language, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,7 +25,9 @@ const Layout = ({ children }) => {
       <GlobalStyles />
       <Typography />
       <AnnouncementBars />
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+
+      {language && <Header language={language} siteTitle={data.site.siteMetadata?.title || `Title`} /> }
+      
       <SiteBorderStyles>
         <main>{children}</main>
         <Footer />

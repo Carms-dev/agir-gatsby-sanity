@@ -4,12 +4,10 @@ const path = require(`path`)
 // create homePage dynamically
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const HomepageTemplate = path.resolve("./src/templates/HomePage.js")
-  const AboutpageTemplate = path.resolve("./src/templates/AboutPage.js")
 
   const result = await graphql(`
     query {
-      allSanityHomePages {
+      allSanityHomePage {
         edges {
           node {
             language
@@ -19,7 +17,7 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allSanityAboutPages {
+      allSanityAboutPage {
         edges {
           node {
             language
@@ -33,19 +31,19 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   // console.log(result.data.allSanityHomePages.edges.node)
-  result.data.allSanityHomePages.edges.forEach(edge => {
+  result.data.allSanityHomePage.edges.forEach(edge => {
     const { node: { language, slug }} = edge
     createPage({
       path: `/${language}/${slug.current}`,
-      component: HomepageTemplate,
+      component: path.resolve("./src/templates/homePage.js"),
       context: { language: language }
     })
   })
-  result.data.allSanityAboutPages.edges.forEach(edge => {
+  result.data.allSanityAboutPage.edges.forEach(edge => {
     const { node: { language, slug }} = edge
     createPage({
       path: `/${language}/${slug.current}`,
-      component: AboutpageTemplate,
+      component: path.resolve("./src/templates/aboutPage.js"),
       context: { language: language }
     })
   })

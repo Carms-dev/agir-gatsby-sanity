@@ -13,12 +13,12 @@ import Hero from "../components/Hero"
 // import LogoGarden from "../components/sections/LogoGarden"
 // import ReportSection from "../components/sections/ReportSection"
 
-export default function AboutpageTemplate({ data: { sanityAboutPages: { title, sections } } }) {
+export default function AboutpageTemplate({ data: { sanityAboutPage: { language, title, sections } } }) {
   // const { hero, mission, belief, story, approach, codeOfEthics, logoGarden, report } = aboutPage
   const { hero } = sections
 
   return (
-    <Layout>
+    <Layout language={language}>
       <Seo title={title} />
       <Hero hero={hero} />
       {/* <MissionSection mission={mission} />
@@ -34,7 +34,7 @@ export default function AboutpageTemplate({ data: { sanityAboutPages: { title, s
 
 export const query = graphql`
   query($language: String) {
-    sanityAboutPages(language: { eq: $language }) {
+    sanityAboutPage(language: { eq: $language }) {
       language
       title
       sections {

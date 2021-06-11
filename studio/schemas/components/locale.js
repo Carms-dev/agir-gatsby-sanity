@@ -6,20 +6,20 @@ export default {
   type: 'string',
   options: {
     list: [
-      { title: 'Arabic', value: 'ar' },
+      { title: 'ﺎﻨﻫ ﻞﺧدأ', value: 'ar' },
       { title: 'English', value: 'en' },
-      { title: 'French', value: 'fr' },
-      { title: 'Spanish', value: 'es' }
+      { title: 'Français', value: 'fr' },
+      { title: 'Espagñol', value: 'es' }
     ]
   },
-  validation: Rule => Rule.required().custom((language, context) => {
-    return client.fetch(`count(*[_type == "${context.document._type}" && language == "${language}"])`)
-      .then(count => {
-        if (count > 1) {
-          return `Only one ${context.document._type} per language is allowed. Edit existing please.`
-        } else {
-          return true
-        }
-      })
-  })
+  // validation: Rule => Rule.required().custom((language, context) => {
+  //   return client.fetch(`count(*[_type == "${context.document._type}" && language == "${language}"])`)
+  //     .then(count => {
+  //       if (count > 1) {
+  //         return `Only one ${context.document._type} per language is allowed. Edit existing please.`
+  //       } else {
+  //         return true
+  //       }
+  //     })
+  // })
 }

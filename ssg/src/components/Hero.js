@@ -2,12 +2,12 @@ import * as React from "react"
 import styled from "styled-components"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-export default function Hero({ hero: { heading, description, featuredImage: { asset } } }) {
+export default function Hero({ hero: { heading, description, featuredImage: { asset, alt } } }) {
   return (
     <HeroStyles>
       <GatsbyImage
         image={asset.gatsbyImageData}
-        alt={asset.alt}
+        alt={alt || ''}
         imgStyle={{ height: `auto` }} />
       <div>
         <h1>{heading}</h1>
