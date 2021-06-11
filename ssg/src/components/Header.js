@@ -6,7 +6,7 @@ import Logo from "./Logo"
 import SideDrawer from "./SideDrawer"
 
 import { AppBar, Toolbar } from "@material-ui/core"
-import { IconButton, List, ListItem, ListItemText, Container, Hidden } from "@material-ui/core"
+import { List, ListItem, ListItemText, Container, Hidden } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles({
@@ -44,14 +44,6 @@ const Header = ({language}) => {
                 }
                 language
               }
-              ... on SanityHomePage {
-                id
-                templateKey
-                slug {
-                  current
-                }
-                language
-              }
             }
           }
         }
@@ -63,12 +55,12 @@ const Header = ({language}) => {
   const navLinks = navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
 
   return (
-    <AppBar position="static" style={{ background: `var(--off-white)` }}>
+    <AppBar position="static" style={{ background: `var(--off-white)`, boxShadow: `unset` }}>
       <Toolbar>
         <Container maxWidth="lg" className={classes.navbarDisplayFlex}>
-          <IconButton edge="start" color="inherit" aria-label="home" href="/home">
+          <Link to={`/${language}`}>
             <Logo />
-          </IconButton>
+          </Link>
           <Hidden mdDown>
             <List
               component="nav"

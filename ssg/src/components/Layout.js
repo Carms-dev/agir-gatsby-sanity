@@ -30,7 +30,7 @@ const Layout = ({ language, children }) => {
       
       <SiteBorderStyles>
         <main>{children}</main>
-        <Footer />
+        <Footer language={language}/>
       </SiteBorderStyles>
     </>
   )
