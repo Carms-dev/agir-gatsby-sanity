@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -7,13 +7,13 @@ import Seo from "../components/Seo"
 
 export default function IndexPage({ data: { sanityLandingPage: { title, featuredImage, languageHomeLinks } } }) {
   const langNames = {
-    ar: 'ﺎﻨﻫ ﻞﺧدأ',
+    ar: 'عربى',
     en: 'English',
     fr: 'Français',
     es: 'Espagñol'
   }
   return (
-    <Layout>
+    <Layout language="fr">
       <Seo title={title} />
       <h1>{title}</h1>
       <GatsbyImage

@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 export default function Logo() {
-  const data = useStaticQuery(graphql`
+  const { sanitySiteSettings: { logo } } = useStaticQuery(graphql`
     query {
       sanitySiteSettings {
         logo {
@@ -19,8 +19,6 @@ export default function Logo() {
       }
     }
   `)
-
-  const { logo } = data.sanitySiteSettings
 
   return (
     <GatsbyImage

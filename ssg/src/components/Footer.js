@@ -16,7 +16,7 @@ export default function Footer({ language }) {
       </Link>
       {/* <p>{address}</p> */}
       {/* TODO: add switcher */}
-      <LanguageSwitcher />
+      <LanguageSwitcher language={language} />
       <Link className="btn btn-primary" to="/contact">Contact us</Link>
       {/* <SocialMediaIcons socialMedia={socialMedia} /> */}
       <p>
