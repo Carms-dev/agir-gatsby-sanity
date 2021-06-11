@@ -9,16 +9,7 @@ export default {
     {
       name: 'name',
       title: 'Partner Name',
-      type: 'string',
-    },
-    {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'name',
-        maxLength: 100,
-      }
+      type: 'localeString',
     },
     {
       name: 'websiteUrl',
@@ -30,5 +21,17 @@ export default {
       title: 'Partner Logo',
       type: 'image',
     },
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      image: 'logo.asset',
+    },
+    prepare: ({ title, image }) => {
+      return {
+        title: title.en,
+        media: image
+      }
+    }
+  }
 }

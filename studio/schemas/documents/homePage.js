@@ -20,6 +20,7 @@ export default {
       name: 'language',
       title: 'Language',
       type: 'locale',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'title',
@@ -50,9 +51,9 @@ export default {
         'ar': '🇦🇪',
       }
       return {
-        title: `${title} (${language.toUpperCase()})`,
+        title,
         subtitle: `/${language}`,
-        media: <span style={{fontSize: '1.5rem'}}>{language ? EMOJIS[language] : '🚫'}</span>
+        media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
   }
