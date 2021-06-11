@@ -21,8 +21,8 @@ export default function IndexPage({ data: { sanityLandingPage: { title, featured
         alt={featuredImage.alt}
         imgStyle={{ height: `auto` }} />
       <ul>
-        {languageHomeLinks.map(({title, language, slug}) => (
-          <li key={language}><Link to={`/${language}/${slug.current}`}>{langNames[language]}</Link></li>
+        {languageHomeLinks.map(link =>   (
+          <li key={link.language}><Link to={`/${link.language}`}>{langNames[link.language]}</Link></li>
         ))}
       </ul>
     </Layout>
@@ -44,10 +44,6 @@ export const query = graphql`
         }
       }
       languageHomeLinks {
-        title
-        slug {
-          current
-        }
         language
       }
     }

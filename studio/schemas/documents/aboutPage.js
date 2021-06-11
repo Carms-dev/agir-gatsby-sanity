@@ -7,7 +7,7 @@ export default {
   type: 'document',
   icon,
   initialValue: {
-    'templateKey': 'aboutPage'
+    templateKey: 'aboutPage'
   },
   fields: [
     {
@@ -20,6 +20,7 @@ export default {
       name: 'language',
       title: 'Language',
       type: 'locale',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'title',
@@ -48,8 +49,10 @@ export default {
     select: {
       title: 'title',
       language: 'language',
+      slug: 'slug'
     },
-    prepare: ({ title, language }) => {
+    prepare: ({ title, language, slug }) => {
+      console.log(slug)
       const EMOJIS = {
         'en': '🇬🇧',
         'es': '🇪🇸',
@@ -57,8 +60,9 @@ export default {
         'ar': '🇦🇪',
       }
       return {
-        title: `${title} (${language.toUpperCase()})`,
-        media: <span style={{fontSize: '1.5rem'}}>{language ? EMOJIS[language] : '🚫'}</span>
+        title,
+        subtitle: `/${language}/${slug.current}`,
+        media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
   }

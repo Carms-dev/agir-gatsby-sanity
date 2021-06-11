@@ -6,6 +6,9 @@ export default {
   title: 'Home Page',
   type: 'document',
   icon,
+  initialValue: {
+    templateKey: 'homePage',
+  },
   fields: [
     {
       name: 'templateKey',
@@ -17,22 +20,13 @@ export default {
       name: 'language',
       title: 'Language',
       type: 'locale',
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'title',
       title: 'Title',
       type: "string",
       description: "The title of this page (this will show up in your browser heading and internal links)",
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      description: "The slug for this page",
-      options: {
-        source: "title",
-      },
       validation: (Rule) => Rule.required(),
     },
     {
@@ -57,8 +51,9 @@ export default {
         'ar': '🇦🇪',
       }
       return {
-        title: `${title} (${language.toUpperCase()})`,
-        media: <span style={{fontSize: '1.5rem'}}>{language ? EMOJIS[language] : '🚫'}</span>
+        title,
+        subtitle: `/${language}`,
+        media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
   }

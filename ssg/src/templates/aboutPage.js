@@ -19,7 +19,7 @@ export default function AboutpageTemplate({ data: { sanityAboutPage: { language,
 
   return (
     <Layout language={language}>
-      <Seo title={title} />
+      <Seo title={title} language={language} />
       <Hero hero={hero} />
       {/* <MissionSection mission={mission} />
       <BeliefSection belief={belief} />

@@ -6,12 +6,14 @@ import Logo from './Logo'
 import LanguageSwitcher from './LanguageSwitcher'
 // import SocialMediaIcons from './SocialMediaIcons'
 
-export default function Footer() {
+export default function Footer({ language }) {
   // get contact info from contact page
 
   return (
     <FooterStyles>
-      <Logo />
+      <Link to={`/${language}`}>
+        <Logo />
+      </Link>
       {/* <p>{address}</p> */}
       {/* TODO: add switcher */}
       <LanguageSwitcher />

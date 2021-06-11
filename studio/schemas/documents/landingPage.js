@@ -11,19 +11,14 @@ export default {
       name: 'title',
       title: 'Title',
       type: "string",
-      description: "The title of this page (this will show up in your browser heading and internal links)",
+      description: "The title of this page",
       validation: (Rule) => Rule.required(),
     },
-    // {
-    //   name: "slug",
-    //   title: "Slug",
-    //   type: "slug",
-    //   description: "The slug for this page",
-    //   options: {
-    //     source: "title",
-    //   },
-    //   validation: (Rule) => Rule.required(),
-    // },
+    {
+      name: 'heading',
+      title: 'Heading',
+      type: "string",
+    },
     {name: 'featuredImage', title: 'Featured Image', type: 'imageBlock'},
     {
       name: 'languageHomeLinks',
@@ -47,6 +42,7 @@ export default {
     prepare: ({ title, image }) => {
       return {
         title: title,
+        subtitle: `/`,
         media: image
       }
     }

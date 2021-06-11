@@ -22,6 +22,7 @@ import homeSections from './objects/homeSections'
 import aboutSections from './objects/aboutSections'
 import hero from './objects/hero'
 import pageLink from './objects/pageLink'
+import { localeString, localeText } from './objects/localizedFields'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -44,7 +45,11 @@ export default createSchema({
     
     // Objects
     partner,
-    
+
+    // localizedFields
+    localeString,
+    localeText,
+
     // Components
     imageBlock,
     internalLink,

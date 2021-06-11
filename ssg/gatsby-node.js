@@ -11,9 +11,6 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             language
-            slug {
-              current
-            }
           }
         }
       }
@@ -32,9 +29,9 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // console.log(result.data.allSanityHomePages.edges.node)
   result.data.allSanityHomePage.edges.forEach(edge => {
-    const { node: { language, slug }} = edge
+    const { node: { language }} = edge
     createPage({
-      path: `/${language}/${slug.current}`,
+      path: `/${language}`,
       component: path.resolve("./src/templates/homePage.js"),
       context: { language: language }
     })
