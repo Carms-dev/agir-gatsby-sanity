@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
 // using material-ui SimpleSelect
 export default function LanguageSwitcher({ language }) {
   const classes = useStyles();
-
   const handleChange = (event) => {
     // redirect to corresponding home page
     navigate(`/${event.target.value}`)
@@ -25,7 +24,7 @@ export default function LanguageSwitcher({ language }) {
     <div>
       <FormControl className={classes.formControl}>
         <Select
-          value={language}
+          value={language || `fr`}
           onChange={handleChange}
         >
           <MenuItem value={"fr"}>Français</MenuItem>

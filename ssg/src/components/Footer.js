@@ -12,7 +12,7 @@ export default function Footer({ language }) {
   return (
     <FooterStyles>
       <Link to={`/${language}`}>
-        <Logo />
+        <Logo style={{width: `80px`}} />
       </Link>
       {/* <p>{address}</p> */}
       {/* TODO: add switcher */}

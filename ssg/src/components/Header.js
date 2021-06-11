@@ -59,7 +59,7 @@ const Header = ({language}) => {
       <Toolbar>
         <Container maxWidth="lg" className={classes.navbarDisplayFlex}>
           <Link to={`/${language}`}>
-            <Logo />
+            <Logo style={{width: `80px`}} />
           </Link>
           <Hidden mdDown>
             <List
