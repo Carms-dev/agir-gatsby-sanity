@@ -1,6 +1,6 @@
 import React from "react";
+import { navigate } from 'gatsby'
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
@@ -13,27 +13,24 @@ const useStyles = makeStyles(() => ({
 }));
 
 // using material-ui SimpleSelect
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ language }) {
   const classes = useStyles();
-  const [lang, setLang] = React.useState("");
-
   const handleChange = (event) => {
-    setLang(event.target.value);
+    // redirect to corresponding home page
+    navigate(`/${event.target.value}`)
   };
 
   return (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Language</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={lang}
+          value={language || `fr`}
           onChange={handleChange}
         >
-          <MenuItem value={"fr"}>French</MenuItem>
+          <MenuItem value={"fr"}>Français</MenuItem>
           <MenuItem value={"en"}>English</MenuItem>
-          <MenuItem value={"es"}>Spanish</MenuItem>
+          <MenuItem value={"es"}>Espagñol</MenuItem>
+          <MenuItem value={"ar"}>عربى</MenuItem>
         </Select>
       </FormControl>
     </div>

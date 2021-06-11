@@ -12,11 +12,11 @@ export default function Footer({ language }) {
   return (
     <FooterStyles>
       <Link to={`/${language}`}>
-        <Logo />
+        <Logo style={{width: `80px`}} />
       </Link>
       {/* <p>{address}</p> */}
       {/* TODO: add switcher */}
-      <LanguageSwitcher />
+      <LanguageSwitcher language={language} />
       <Link className="btn btn-primary" to="/contact">Contact us</Link>
       {/* <SocialMediaIcons socialMedia={socialMedia} /> */}
       <p>
