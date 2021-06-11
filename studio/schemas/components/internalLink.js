@@ -3,7 +3,7 @@ export default {
   title: 'Internal link',
   type: 'reference',
   to: [
-    { type: 'homePage' },
+    // { type: 'homePage' },
     { type: 'aboutPage' },
   ],
   options: {
