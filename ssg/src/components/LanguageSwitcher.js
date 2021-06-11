@@ -13,7 +13,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 // using material-ui SimpleSelect
-// TODO: wire Polylang language switcher
 export default function LanguageSwitcher() {
   const classes = useStyles();
   const [lang, setLang] = React.useState("");

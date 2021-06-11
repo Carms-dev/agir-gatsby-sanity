@@ -76,7 +76,7 @@ const Header = ({language}) => {
               className={classes.navDisplayFlex}
             >
               {navLinks.map(({ title, path }) => (
-                <Link href={path} key={title} className={classes.linkText}>
+                <Link to={path} key={title} className={classes.linkText}>
                   <ListItem button>
                     <ListItemText primary={title} />
                   </ListItem>
