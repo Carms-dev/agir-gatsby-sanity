@@ -1,5 +1,5 @@
 import * as React from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Logo from "./Logo"
@@ -87,12 +87,12 @@ const Header = ({language}) => {
   )
 }
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+// Header.propTypes = {
+//   siteTitle: PropTypes.string,
+// }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+// Header.defaultProps = {
+//   siteTitle: ``,
+// }
 
 export default Header

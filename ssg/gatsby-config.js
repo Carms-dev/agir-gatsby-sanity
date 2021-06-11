@@ -1,10 +1,4 @@
 module.exports = {
-  siteMetadata: {
-    title: `AGIR Montréal`,
-    description: `LGBTQIA+ Migrant & Refugee Support in Montréal`,
-    author: ``,
-    siteUrl: 'https://agirmontreal.netlify.app'
-  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
@@ -36,7 +30,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/agir-icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,

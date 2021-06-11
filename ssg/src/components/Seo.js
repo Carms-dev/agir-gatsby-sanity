@@ -1,37 +1,40 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function Seo({ description, language, meta, title }) {
+  // query meta data from sanity
+  // TODO: implement author
+  const { sanitySiteSettings } = useStaticQuery(
     graphql`
       query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
+        sanitySiteSettings {
+          title {
+            ar
+            en
+            es
+            fr
+          }
+          description {
+            ar
+            en
+            es
+            fr
           }
         }
+        # author {}
       }
     `
   )
-
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
-
+  
+  const metaDescription = sanitySiteSettings.description[language] || description
+  const defaultTitle = sanitySiteSettings.title[language]
+  
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        language,
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
@@ -58,7 +61,7 @@ function Seo({ description, lang, meta, title }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: sanitySiteSettings?.author || ``,
         },
         {
           name: `twitter:title`,
@@ -74,14 +77,14 @@ function Seo({ description, lang, meta, title }) {
 }
 
 Seo.defaultProps = {
-  lang: `en`,
+  language: `fr`,
   meta: [],
   description: ``,
 }
 
 Seo.propTypes = {
   description: PropTypes.string,
-  lang: PropTypes.string,
+  language: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
 }

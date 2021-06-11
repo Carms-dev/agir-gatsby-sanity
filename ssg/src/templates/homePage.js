@@ -11,7 +11,7 @@ export default function HomepageTemplate({ data: { sanityHomePage: { language, t
 
   return (
     <Layout language={language}>
-      <Seo title={title} />
+      <Seo title={title} language={language} />
       <Hero hero={hero}/>
       <Link to="/">Go back to Landing</Link>
     </Layout>
