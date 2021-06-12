@@ -1,14 +1,29 @@
 import React from "react";
 import { navigate } from 'gatsby'
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles"
+import MenuItem from "@material-ui/core/MenuItem"
+import FormControl from "@material-ui/core/FormControl"
+import Select from "@material-ui/core/Select"
+import { GrLanguage } from 'react-icons/gr'
 
 const useStyles = makeStyles(() => ({
   formControl: {
-    minWidth: 180,
-    width: `100%`
+    display: `flex`,
+    flexDirection: `row`,
+    alignItems: `center`,
+    background: `var(--off-white)`,
+    width: `100%`,
+    padding: `0.5rem`,
+    borderRadius: `4px`,
+    border: `1px solid var(--darker)`,
+    "& .MuiInputBase-root": {
+      width: `inherit`
+    }
+  },
+  icon: {
+    fontSize: `1.25rem`,
+    marginRight: `0.5rem`,
+    color: `var(--darker)`,
   }
 }));
 
@@ -23,7 +38,9 @@ export default function LanguageSwitcher({ language }) {
   return (
     <div>
       <FormControl className={classes.formControl}>
+        <GrLanguage className={classes.icon} />
         <Select
+          disableUnderline
           value={language || `fr`}
           onChange={handleChange}
         >

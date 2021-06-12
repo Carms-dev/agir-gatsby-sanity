@@ -8,19 +8,20 @@ import Header from "./Header"
 import Footer from "./Footer"
 import Typography from "../styles/Typography"
 
-const Layout = ({ language, children }) => (
+const Layout = ({ language, noHeader, children }) => (
   <>
     <GlobalStyles />
     <Typography />
     <AnnouncementBars />
 
     {/* Do not display Header on landing page */}
-    {language && <Header language={language} />}
+    {!noHeader && <Header language={language} />}
 
     <SiteBorderStyles>
       <main>{children}</main>
-      <Footer language={language} />
     </SiteBorderStyles>
+
+    <Footer language={language} />
   </>
 )
 

@@ -1,4 +1,4 @@
-export default {
+const hero = {
   name: 'hero',
   title: 'Hero Section',
   type: 'object',
@@ -30,3 +30,16 @@ export default {
     // }
   ]
 }
+
+const heroAlt = {
+  name: 'heroAlt',
+  title: 'Hero Section',
+  type: 'object',
+  options: {collapsible: true, collapsed: false},
+  fields: [
+    {name: 'heading', title: 'Heading', type: 'string'},
+    {name: 'description', title: 'Description', type: 'portableText'},
+  ]
+}
+
+export { hero, heroAlt }

@@ -36,7 +36,7 @@ export default {
       }
       return {
         title: `Navbar (${language.toUpperCase()})`,
-        media: <span style={{fontSize: '1.5rem'}}>{language ? EMOJIS[language] : '🚫'}</span>
+        media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
   }

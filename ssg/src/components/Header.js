@@ -1,9 +1,10 @@
 import * as React from "react"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Logo from "./Logo"
 import SideDrawer from "./SideDrawer"
+import LanguageSwitcher from './LanguageSwitcher'
 
 import { AppBar, Toolbar } from "@material-ui/core"
 import { List, ListItem, ListItemText, Container, Hidden } from "@material-ui/core"
@@ -25,11 +26,11 @@ const useStyles = makeStyles({
   }
 });
 
-const Header = ({language}) => {
+const Header = ({ language }) => {
   const classes = useStyles();
 
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query {
       allSanityNavigation {
         nodes {
           language
@@ -37,7 +38,34 @@ const Header = ({language}) => {
             label
             pageLink {
               ... on SanityAboutPage {
-                id
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityGetSupportPage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityGetInvolvedPage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityDonatePage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityContactPage {
                 templateKey
                 slug {
                   current
@@ -51,8 +79,13 @@ const Header = ({language}) => {
     }
   `)
 
-  const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language )
-  const navLinks = navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
+  const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language) || []
+  const navLinks = navItems.map(({label, pageLink}) => (
+    {
+      title: label,
+      path: `/${language}/${pageLink.slug.current}`
+    }
+  ))
 
   return (
     <AppBar position="static" style={{ background: `var(--off-white)`, boxShadow: `unset` }}>
@@ -74,6 +107,7 @@ const Header = ({language}) => {
                   </ListItem>
                 </Link>
               ))}
+              <LanguageSwitcher language={language} />
             </List>
           </Hidden>
 
@@ -87,12 +121,12 @@ const Header = ({language}) => {
   )
 }
 
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
+Header.propTypes = {
+  language: PropTypes.string,
+}
 
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
+Header.defaultProps = {
+  language: `fr`,
+}
 
 export default Header

@@ -5,6 +5,10 @@ export default {
   to: [
     // { type: 'homePage' },
     { type: 'aboutPage' },
+    { type: 'getSupportPage' },
+    { type: 'getInvolvedPage' },
+    { type: 'donatePage' },
+    { type: 'contactPage' },
   ],
   options: {
     filter: ({document}) => {
@@ -12,11 +16,9 @@ export default {
       // before attempting to use them
       if (document.language) {
         return {
-          filter: 'language == $currentLanguage && _type != $currentType || _type == "landingPage"',
+          filter: 'language == $currentLanguage && _type',
           params: {
-            // role: 'InternalLink',
             currentLanguage: document.language,
-            currentType: document._type
           }
         }
       }

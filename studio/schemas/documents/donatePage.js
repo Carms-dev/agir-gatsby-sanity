@@ -1,13 +1,13 @@
-import { AiOutlineHome as icon } from 'react-icons/ai'
+import { MdAttachMoney as icon } from 'react-icons/md'
 import React from 'react' 
 
 export default {
-  name: 'homePage',
-  title: 'Home Page',
+  name: 'donatePage',
+  title: 'Donate Page',
   type: 'document',
   icon,
   initialValue: {
-    templateKey: 'homePage',
+    templateKey: 'donatePage'
   },
   fields: [
     {
@@ -20,7 +20,6 @@ export default {
       name: 'language',
       title: 'Language',
       type: 'locale',
-      // TODO: implement validation, once page per lang only
       validation: (Rule) => Rule.required(),
     },
     {
@@ -31,20 +30,29 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "The slug for this page",
+      options: {
+        source: "title",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'sections',
       title: 'Sections',
-      type: 'homeSections',
+      type: 'donateSections',
     }
   ],
-  initialValue: {
-    templateKey: 'homePage'
-  },
   preview: {
     select: {
       title: 'title',
       language: 'language',
+      slug: 'slug'
     },
-    prepare: ({ title, language }) => {
+    prepare: ({ title, language, slug }) => {
+      console.log(slug)
       const EMOJIS = {
         'en': '🇬🇧',
         'es': '🇪🇸',
@@ -53,7 +61,7 @@ export default {
       }
       return {
         title,
-        subtitle: `/${language}`,
+        subtitle: `/${language}/${slug.current}`,
         media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
