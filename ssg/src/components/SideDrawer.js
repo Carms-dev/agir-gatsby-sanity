@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { IconButton, Drawer, List, ListItem, ListItemText } from "@material-ui/core"
 import { Menu } from "@material-ui/icons"
 import { makeStyles } from "@material-ui/core/styles"
+import LanguageSwitcher from './LanguageSwitcher'
 
 const useStyles = makeStyles({
   list: {
@@ -12,6 +13,11 @@ const useStyles = makeStyles({
     textDecoration: `none`,
     color: `black`,
   },
+  drawer: {
+    "& .MuiDrawer-paper": {
+      padding: `1rem`,
+    },
+  }
 })
 
 export default function SideDrawer({ navLinks }) {
@@ -58,11 +64,13 @@ export default function SideDrawer({ navLinks }) {
         <Menu fontSize="large" />
       </IconButton>
       <Drawer
+        className={classes.drawer}
         anchor="right"
         open={state.right}
         onClose={toggleDrawer("right", false)}
       >
         {sideDrawerList("right")}
+        <LanguageSwitcher />
       </Drawer>
     </>
   )

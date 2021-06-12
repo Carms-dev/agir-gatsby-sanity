@@ -4,6 +4,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Logo from "./Logo"
 import SideDrawer from "./SideDrawer"
+import LanguageSwitcher from './LanguageSwitcher'
 
 import { AppBar, Toolbar } from "@material-ui/core"
 import { List, ListItem, ListItemText, Container, Hidden } from "@material-ui/core"
@@ -37,7 +38,34 @@ const Header = ({language}) => {
             label
             pageLink {
               ... on SanityAboutPage {
-                id
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityGetSupportPage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityGetInvolvedPage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityDonatePage {
+                templateKey
+                slug {
+                  current
+                }
+                language
+              }
+              ... on SanityContactPage {
                 templateKey
                 slug {
                   current
@@ -52,6 +80,7 @@ const Header = ({language}) => {
   `)
 
   const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language )
+
   const navLinks = navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
 
   return (
@@ -74,6 +103,7 @@ const Header = ({language}) => {
                   </ListItem>
                 </Link>
               ))}
+              <LanguageSwitcher />
             </List>
           </Hidden>
 

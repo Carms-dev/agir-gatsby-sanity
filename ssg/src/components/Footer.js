@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
 
 import Logo from './Logo'
@@ -7,26 +7,66 @@ import LanguageSwitcher from './LanguageSwitcher'
 // import SocialMediaIcons from './SocialMediaIcons'
 
 export default function Footer({ language }) {
-  // get contact info from contact page
+  const { sanitySiteSettings, allSanityContactPage, allSanityPrivacyPolicyPage } = useStaticQuery(graphql`
+    query {
+      sanitySiteSettings {
+        name
+        address
+      }
+      allSanityContactPage {
+        nodes {
+          title
+          slug {
+            current
+          }
+          language
+        }
+      }
+      allSanityPrivacyPolicyPage {
+        nodes {
+          title
+          slug {
+            current
+          }
+          language
+        }
+      }
+    }
+  `)
 
+  const { name, address } = sanitySiteSettings
+
+  // Index does not have language state
+  const contactLink = language ?
+    allSanityContactPage.nodes.find(node => node.language === language) :
+    allSanityContactPage.nodes.find(node => node.language === `fr`)
+
+  const privacyPolicyLink = language ?
+    allSanityPrivacyPolicyPage.nodes.find(node => node.language === language) :
+    allSanityPrivacyPolicyPage.nodes.find(node => node.language === `fr`)
+
+  // get contact info from contact page
   return (
     <FooterStyles>
       <Link to={`/${language}`}>
         <Logo style={{width: `80px`}} />
       </Link>
-      {/* <p>{address}</p> */}
+      <p>{address}</p>
       {/* TODO: add switcher */}
       <LanguageSwitcher language={language} />
-      <Link className="btn btn-primary" to="/contact">Contact us</Link>
+      <Link className="btn btn-primary" to={`/${language}/${contactLink.slug.current}`}>
+        {contactLink.title}
+      </Link>
       {/* <SocialMediaIcons socialMedia={socialMedia} /> */}
       <p>
-        <span>© AGIR, {new Date().getFullYear()}.{` `}</span>
-        <Link to="/privacy">Privacy policy</Link>
+        <span>© {name}, {new Date().getFullYear()}.{` `}</span>
+        <Link to={`/${language}/${privacyPolicyLink.slug.current}`}>
+          {privacyPolicyLink.title}
+        </Link>
       </p>
     </FooterStyles>
   )
 }
-
 
 const FooterStyles = styled.footer`
   display: grid;

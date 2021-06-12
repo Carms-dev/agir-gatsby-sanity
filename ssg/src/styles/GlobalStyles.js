@@ -22,6 +22,9 @@ const GlobalStyles = createGlobalStyle`
     color: var(--darker);
     line-height: 1.15;
   }
+  p {
+    line-height: 1.6;
+  }
   a {
     font-weight: 500;
     text-decoration: none;

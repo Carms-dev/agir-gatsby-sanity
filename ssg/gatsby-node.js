@@ -27,7 +27,6 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  // console.log(result.data.allSanityHomePages.edges.node)
   result.data.allSanityHomePage.edges.forEach(edge => {
     const { node: { language }} = edge
     createPage({
