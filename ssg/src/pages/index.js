@@ -15,7 +15,7 @@ export default function IndexPage({ data: { sanityLandingPage: { title, heading,
     es: 'Espagñol'
   }
   return (
-    <Layout language={`fr`} isLanding={true}>
+    <Layout language={`fr`} noHeader={true}>
       <LandingPageStyles>
         <Seo title={title} />
         <Logo style={{width: `100px`}}/>

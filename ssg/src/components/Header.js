@@ -1,5 +1,5 @@
 import * as React from "react"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Logo from "./Logo"
@@ -78,9 +78,14 @@ const Header = ({ language }) => {
       }
     }
   `)
-  // find the node that match the `language` prop
-  const node = data.allSanityNavigation.nodes.find(node => node.language === language )
-  const navLinks = node.navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
+
+  const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language) || []
+  const navLinks = navItems.map(({label, pageLink}) => (
+    {
+      title: label,
+      path: `/${language}/${pageLink.slug.current}`
+    }
+  ))
 
   return (
     <AppBar position="static" style={{ background: `var(--off-white)`, boxShadow: `unset` }}>
@@ -116,12 +121,12 @@ const Header = ({ language }) => {
   )
 }
 
-// Header.propTypes = {
-//   siteTitle: PropTypes.string,
-// }
+Header.propTypes = {
+  language: PropTypes.string,
+}
 
-// Header.defaultProps = {
-//   siteTitle: ``,
-// }
+Header.defaultProps = {
+  language: `fr`,
+}
 
 export default Header
