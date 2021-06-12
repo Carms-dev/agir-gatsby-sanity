@@ -13,7 +13,7 @@ import Hero from "../components/Hero"
 // import LogoGarden from "../components/sections/LogoGarden"
 // import ReportSection from "../components/sections/ReportSection"
 
-export default function AboutpageTemplate({ data: { sanityAboutPage: { language, title, sections } } }) {
+export default function AboutPageTemplate({ data: { sanityAboutPage: { language, title, sections } } }) {
   // const { hero, mission, belief, story, approach, codeOfEthics, logoGarden, report } = aboutPage
   const { hero } = sections
 
