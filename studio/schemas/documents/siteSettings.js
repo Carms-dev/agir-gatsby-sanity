@@ -8,17 +8,29 @@ export default {
   __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
+      name: 'name',
+      title: 'Organization name',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'address',
+      title: 'Organization address',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'title',
-      title: 'Title',
+      title: 'Website Title',
       type: 'localeString',
-      description: 'Website Title',
+      description: 'For SEO localization purposes',
       validation: (Rule) => Rule.required(),
     },
     {
       name: 'description',
-      title: 'Description',
+      title: 'Meta Description',
       type: 'localeText',
-      description: 'Website description',
+      description: 'For SEO localization purposes',
       validation: (Rule) => Rule.required(),
     },
     {
@@ -26,17 +38,19 @@ export default {
       title: 'Logo',
       type: 'imageBlock',
       validation: (Rule) => Rule.required(),
-    }
+    },
   ],
   preview: {
     select: {
-      title: 'title',
+      name: 'name',
+      title: 'title.en',
       image: 'logo.asset',
     },
-    prepare: ({ title, image }) => {
+    prepare: ({ name, title, image }) => {
       return {
-        title: title.en,
-        media: image
+        title: name,
+        subtitle: title,
+        media: image,
       }
     }
   }

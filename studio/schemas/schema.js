@@ -8,8 +8,15 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import landingPage from './documents/landingPage'
 import homePage from './documents/homePage'
 import aboutPage from './documents/aboutPage'
+import getSupportPage from './documents/getSupportPage'
+import getInvolvedPage from './documents/getInvolvedPage'
+import donatePage from './documents/donatePage'
+import privacyPolicyPage from './documents/privacyPolicyPage'
+import contactPage from './documents/contactPage'
+
 import navigation from './documents/navigation'
 import siteSettings from './documents/siteSettings'
+
 import partner from './documents/partner'
 
 // import reusable components to schema
@@ -18,11 +25,11 @@ import imageBlock from './components/imageBlock'
 import internalLink from './components/internalLink'
 
 // import section to schema
-import homeSections from './objects/homeSections'
-import aboutSections from './objects/aboutSections'
-import hero from './objects/hero'
+import { homeSections, aboutSections, getSupportSections, contactSections, getInvolvedSections, donateSections } from './objects/sections'
+import { hero, heroAlt } from './objects/hero'
 import pageLink from './objects/pageLink'
 import { localeString, localeText } from './objects/localizedFields'
+import portableText from './components/portableText'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -35,13 +42,23 @@ export default createSchema({
     landingPage,
     homePage,
     aboutPage,
+    getSupportPage,
+    getInvolvedPage,
+    donatePage,
+    contactPage,
+    privacyPolicyPage,
     
     // Sections Object of pages
     homeSections,
     aboutSections,
-    
+    getSupportSections,
+    getInvolvedSections,
+    donateSections,
+    contactSections,
+
     // Reusable Section
     hero,
+    heroAlt,
     
     // Objects
     partner,
@@ -55,6 +72,7 @@ export default createSchema({
     internalLink,
     locale,
     pageLink,
+    portableText,
 
     // General Settings
     siteSettings,

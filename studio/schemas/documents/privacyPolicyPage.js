@@ -1,13 +1,13 @@
-import { AiOutlineHome as icon } from 'react-icons/ai'
+import { RiChatPrivateLine as icon } from 'react-icons/ri'
 import React from 'react' 
 
 export default {
-  name: 'homePage',
-  title: 'Home Page',
+  name: 'privacyPolicyPage',
+  title: 'Privacy Policy Page',
   type: 'document',
   icon,
   initialValue: {
-    templateKey: 'homePage',
+    templateKey: 'privacyPolicyPage',
   },
   fields: [
     {
@@ -31,20 +31,29 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'sections',
-      title: 'Sections',
-      type: 'homeSections',
-    }
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "The slug for this page",
+      options: {
+        source: "title",
+      },
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'portableText'
+    },
   ],
-  initialValue: {
-    templateKey: 'homePage'
-  },
   preview: {
     select: {
       title: 'title',
       language: 'language',
+      slug: 'slug'
     },
-    prepare: ({ title, language }) => {
+    prepare: ({ title, language, slug }) => {
+      console.log(slug)
       const EMOJIS = {
         'en': '🇬🇧',
         'es': '🇪🇸',
@@ -53,7 +62,7 @@ export default {
       }
       return {
         title,
-        subtitle: `/${language}`,
+        subtitle: `/${language}/${slug.current}`,
         media: <span style={{fontSize: '1.5rem'}}>{EMOJIS[language]}</span>
       }
     }
