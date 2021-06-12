@@ -16,7 +16,6 @@ const useStyles = makeStyles(() => ({
     padding: `0.5rem`,
     borderRadius: `4px`,
     border: `1px solid var(--darker)`,
- 
     "& .MuiInputBase-root": {
       width: `inherit`
     }

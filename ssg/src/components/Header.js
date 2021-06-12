@@ -26,11 +26,11 @@ const useStyles = makeStyles({
   }
 });
 
-const Header = ({language}) => {
+const Header = ({ language }) => {
   const classes = useStyles();
 
   const data = useStaticQuery(graphql`
-    query MyQuery {
+    query {
       allSanityNavigation {
         nodes {
           language
@@ -78,10 +78,9 @@ const Header = ({language}) => {
       }
     }
   `)
-
-  const { navItems } = data.allSanityNavigation.nodes.find(node => node.language === language )
-
-  const navLinks = navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
+  // find the node that match the `language` prop
+  const node = data.allSanityNavigation.nodes.find(node => node.language === language )
+  const navLinks = node.navItems.map(({label, pageLink}) => ({ title: label, path: `/${language}/${pageLink.slug.current}`}))
 
   return (
     <AppBar position="static" style={{ background: `var(--off-white)`, boxShadow: `unset` }}>
@@ -103,7 +102,7 @@ const Header = ({language}) => {
                   </ListItem>
                 </Link>
               ))}
-              <LanguageSwitcher />
+              <LanguageSwitcher language={language} />
             </List>
           </Hidden>
 

@@ -15,7 +15,7 @@ export default function IndexPage({ data: { sanityLandingPage: { title, heading,
     es: 'Espagñol'
   }
   return (
-    <Layout>
+    <Layout language={`fr`} isLanding={true}>
       <LandingPageStyles>
         <Seo title={title} />
         <Logo style={{width: `100px`}}/>
@@ -42,6 +42,8 @@ export default function IndexPage({ data: { sanityLandingPage: { title, heading,
 const LandingPageStyles = styled.div`
   text-align: center;
   padding: 1rem 0;
+  min-height: 100vh;
+
   h1 {
     font-size: 2rem;
     margin-bottom: 1rem;

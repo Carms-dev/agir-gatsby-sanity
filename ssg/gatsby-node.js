@@ -70,20 +70,4 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-  // result.data.allSanityHomePage.nodes.forEach(node => {
-  //   const { language, templateKey } = edge
-  //   createPage({
-  //     path: `/${language}`,
-  //     component: path.resolve("./src/templates/homePage.js"),
-  //     context: { language: language }
-  //   })
-  // })
-  // result.data.allSanityAboutPage.edges.forEach(edge => {
-  //   const { node: { language, slug }} = edge
-  //   createPage({
-  //     path: `/${language}/${slug.current}`,
-  //     component: path.resolve("./src/templates/aboutPage.js"),
-  //     context: { language: language }
-  //   })
-  // })
 }

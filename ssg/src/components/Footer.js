@@ -37,42 +37,42 @@ export default function Footer({ language }) {
   const { name, address } = sanitySiteSettings
 
   // Index does not have language state
-  const contactLink = language ?
-    allSanityContactPage.nodes.find(node => node.language === language) :
-    allSanityContactPage.nodes.find(node => node.language === `fr`)
-
-  const privacyPolicyLink = language ?
-    allSanityPrivacyPolicyPage.nodes.find(node => node.language === language) :
-    allSanityPrivacyPolicyPage.nodes.find(node => node.language === `fr`)
+  const contactLink = allSanityContactPage.nodes.find(node => node.language === language)
+  const privacyPolicyLink = allSanityPrivacyPolicyPage.nodes.find(node => node.language === language)
 
   // get contact info from contact page
   return (
-    <FooterStyles>
-      <Link to={`/${language}`}>
-        <Logo style={{width: `80px`}} />
-      </Link>
-      <p>{address}</p>
-      {/* TODO: add switcher */}
-      <LanguageSwitcher language={language} />
-      <Link className="btn btn-primary" to={`/${language}/${contactLink.slug.current}`}>
-        {contactLink.title}
-      </Link>
-      {/* <SocialMediaIcons socialMedia={socialMedia} /> */}
-      <p>
-        <span>© {name}, {new Date().getFullYear()}.{` `}</span>
-        <Link to={`/${language}/${privacyPolicyLink.slug.current}`}>
-          {privacyPolicyLink.title}
+    <div style={{ background: `var(--off-white)`}}>
+      <FooterStyles>
+        <Link to={`/${language}`}>
+          <Logo style={{width: `80px`}} />
         </Link>
-      </p>
-    </FooterStyles>
+        <p>{address}</p>
+        {/* TODO: add switcher */}
+        <LanguageSwitcher language={language} />
+        <Link className="btn btn-primary" to={`/${language}/${contactLink.slug.current}`}>
+          {contactLink.title}
+        </Link>
+        {/* <SocialMediaIcons socialMedia={socialMedia} /> */}
+        <p>
+          <span>© {name}, {new Date().getFullYear()}.{` `}</span>
+          <Link to={`/${language}/${privacyPolicyLink.slug.current}`}>
+            {privacyPolicyLink.title}
+          </Link>
+        </p>
+      </FooterStyles>
+    </div>
   )
 }
 
 const FooterStyles = styled.footer`
+  width: 100%;
+  margin: 0 auto;
+
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-gap: 16px;
-  padding: 20px 0;
+  padding: 50px 20px 20px 20px;
 
   div:first-child {
     grid-column: 1 / 1;
@@ -102,7 +102,7 @@ const FooterStyles = styled.footer`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 50px 100px;
     place-items: center center;
-    
+
     & > * {
       max-width: 240px;
     }
@@ -127,7 +127,10 @@ const FooterStyles = styled.footer`
     p:last-child {
       grid-column: 1 / -1;
       justify-self: start;
+      max-width: unset;
     }
-    
+  }
+  @media (min-width: 1280px) {
+    max-width: 1280px;
   }
 `

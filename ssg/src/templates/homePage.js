@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -13,7 +12,6 @@ export default function HomePageTemplate({ data: { sanityHomePage: { language, t
     <Layout language={language}>
       <Seo title={title} language={language} />
       <Hero hero={hero}/>
-      <Link to="/">Go back to Landing</Link>
     </Layout>
   )
 }
