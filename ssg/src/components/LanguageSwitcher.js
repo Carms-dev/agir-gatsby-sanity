@@ -8,14 +8,16 @@ import { GrLanguage } from 'react-icons/gr'
 
 const useStyles = makeStyles(() => ({
   formControl: {
-    display: `flex`,
-    flexDirection: `row`,
-    alignItems: `center`,
-    background: `var(--off-white)`,
-    width: `100%`,
-    padding: `0.5rem`,
-    borderRadius: `4px`,
-    border: `1px solid var(--darker)`,
+    "&.MuiFormControl-root": {
+      display: `flex`,
+      flexDirection: `row`,
+      alignItems: `center`,
+      background: `var(--off-white)`,
+      width: `100%`,
+      padding: `0.5rem`,
+      borderRadius: `4px`,
+      border: `1px solid var(--darker)`,
+    },
     "& .MuiInputBase-root": {
       width: `inherit`
     }
