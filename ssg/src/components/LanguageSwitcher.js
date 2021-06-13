@@ -4,29 +4,13 @@ import { makeStyles } from "@material-ui/core/styles"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import { GrLanguage } from 'react-icons/gr'
+import LanguageIcon from '@material-ui/icons/Language';
 
 const useStyles = makeStyles(() => ({
   formControl: {
-    "&.MuiFormControl-root": {
-      display: `flex`,
-      flexDirection: `row`,
-      alignItems: `center`,
-      background: `var(--off-white)`,
-      width: `100%`,
-      padding: `0.5rem`,
-      borderRadius: `4px`,
-      border: `1px solid var(--darker)`,
-    },
-    "& .MuiInputBase-root": {
-      width: `inherit`
-    }
+    minWidth: 160,
+    width: `100%`,
   },
-  icon: {
-    fontSize: `1.25rem`,
-    marginRight: `0.5rem`,
-    color: `var(--darker)`,
-  }
 }));
 
 // using material-ui SimpleSelect
@@ -38,20 +22,21 @@ export default function LanguageSwitcher({ language }) {
   };
 
   return (
-    <div>
-      <FormControl className={classes.formControl}>
-        <GrLanguage className={classes.icon} />
-        <Select
-          disableUnderline
-          value={language || `fr`}
-          onChange={handleChange}
-        >
-          <MenuItem value={"fr"}>Français</MenuItem>
-          <MenuItem value={"en"}>English</MenuItem>
-          <MenuItem value={"es"}>Espagñol</MenuItem>
-          <MenuItem value={"ar"}>عربى</MenuItem>
-        </Select>
-      </FormControl>
-    </div>
+    <FormControl
+      variant={`outlined`}
+      className={classes.formControl}
+    >
+      <Select
+        disableUnderline
+        value={language || `fr`}
+        onChange={handleChange}
+        IconComponent={LanguageIcon}
+      >
+        <MenuItem value={"fr"}>Français</MenuItem>
+        <MenuItem value={"en"}>English</MenuItem>
+        <MenuItem value={"es"}>Espagñol</MenuItem>
+        <MenuItem value={"ar"}>عربى</MenuItem>
+      </Select>
+    </FormControl>
   );
 }

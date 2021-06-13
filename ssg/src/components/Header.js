@@ -18,7 +18,9 @@ const useStyles = makeStyles({
   },
   navDisplayFlex: {
     display: `flex`,
-    justifyContent: `space-between`
+    justifyContent: `space-between`,
+    alignItems: `center`,
+    whiteSpace: `nowrap`,
   },
   linkText: {
     textDecoration: `none`,

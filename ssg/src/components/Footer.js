@@ -112,6 +112,7 @@ const FooterStyles = styled.footer`
     }
     p:nth-child(2) {
       grid-column: 2 / 3;
+      text-align: center;
     }
     div:nth-child(3) {
       grid-column: 3 / -1;
