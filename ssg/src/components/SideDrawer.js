@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   }
 })
 
-export default function SideDrawer({ navLinks }) {
+export default function SideDrawer({ navLinks, language }) {
   const classes = useStyles();
 
   const [state, setState] = useState({ right: false })
@@ -70,7 +70,7 @@ export default function SideDrawer({ navLinks }) {
         onClose={toggleDrawer("right", false)}
       >
         {sideDrawerList("right")}
-        <LanguageSwitcher />
+        <LanguageSwitcher language={language}/>
       </Drawer>
     </>
   )

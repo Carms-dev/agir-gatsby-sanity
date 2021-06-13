@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import MenuItem from "@material-ui/core/MenuItem"
 import FormControl from "@material-ui/core/FormControl"
 import Select from "@material-ui/core/Select"
-import LanguageIcon from '@material-ui/icons/Language';
+import LanguageIcon from '@material-ui/icons/Language'
 
 const useStyles = makeStyles(() => ({
   formControl: {
@@ -28,7 +28,7 @@ export default function LanguageSwitcher({ language }) {
     >
       <Select
         disableUnderline
-        value={language || `fr`}
+        value={language}
         onChange={handleChange}
         IconComponent={LanguageIcon}
       >
