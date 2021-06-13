@@ -114,7 +114,7 @@ const Header = ({ language }) => {
           </Hidden>
 
           <Hidden lgUp>
-            <SideDrawer navLinks={navLinks} />
+            <SideDrawer navLinks={navLinks} language={language} />
           </Hidden>
         </Container>
 
