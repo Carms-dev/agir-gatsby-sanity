@@ -11,7 +11,7 @@ export default function AnnouncementBar({ title, linkText }) {
 
   return (
     <AnnouncementBarStyles style={{display: open ? `flex` : `none`}}>
-      <p>{title}</p>
+      <p style={{ marginBottom: `-6px` }}>{title}</p>
       {linkText && <TransitionsModal 
         modalButtonText={linkText} 
         modalTitle={title} 
@@ -29,7 +29,6 @@ export default function AnnouncementBar({ title, linkText }) {
 }
 
 const AnnouncementBarStyles = styled.div`
-  display: flex;
   align-items: center;
   background: var(--primary-light);
   position: relative;

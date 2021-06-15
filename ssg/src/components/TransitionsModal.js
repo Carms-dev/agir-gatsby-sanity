@@ -13,6 +13,8 @@ const useStyles = makeStyles(() => ({
     // background: `transparent`,
     // border: `none`,
     margin: `0 1rem`,
+    textTransform: `unset`,
+    padding: `0`,
     // fontSize: `inherit`,
     // fontFamily: `inherit`,
     // padding: `0`,

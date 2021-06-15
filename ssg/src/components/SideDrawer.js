@@ -4,6 +4,7 @@ import { IconButton, Drawer, List, ListItem, ListItemText } from "@material-ui/c
 import { Menu } from "@material-ui/icons"
 import { makeStyles } from "@material-ui/core/styles"
 import LanguageSwitcher from './LanguageSwitcher'
+import { Link } from 'gatsby'
 
 const useStyles = makeStyles({
   list: {
@@ -44,11 +45,11 @@ export default function SideDrawer({ navLinks, language }) {
     >
       <List component="nav">
         {navLinks.map(({ title, path }) => (
-          <a href={path} key={title} className={classes.linkText}>
+          <Link href={path} key={title} className={classes.linkText}>
             <ListItem button>
               <ListItemText primary={title} />
             </ListItem>
-          </a>
+          </Link>
         ))}
       </List>
     </div>
