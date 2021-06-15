@@ -18,6 +18,7 @@ import navigation from './documents/navigation'
 import siteSettings from './documents/siteSettings'
 
 import partner from './documents/partner'
+import announcement from './documents/announcement'
 
 // import reusable components to schema
 import locale from './components/locale'
@@ -62,6 +63,7 @@ export default createSchema({
     
     // Objects
     partner,
+    announcement,
 
     // localizedFields
     localeString,
