@@ -3,12 +3,19 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import ReactHtmlParser from 'react-html-parser';
+import { Button } from '@material-ui/core';
+
 
 const useStyles = makeStyles(() => ({
   btnModal: {
     color: `var(--primary-alt)`,
     textDecoration: `underline`,
+    // background: `transparent`,
+    // border: `none`,
+    margin: `0 1rem`,
+    // fontSize: `inherit`,
+    // fontFamily: `inherit`,
+    // padding: `0`,
   },
   modal: {
     display: 'flex',
@@ -46,10 +53,10 @@ export default function TransitionsModal({ modalButtonText, modalTitle, modalCon
   };
 
   return (
-    <div>
-      <button type="button" onClick={handleOpen} className={classes.btnModal}>
+    <>
+      <Button variant="text" onClick={handleOpen} className={classes.btnModal}>
         {modalButtonText}
-      </button>
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -64,13 +71,12 @@ export default function TransitionsModal({ modalButtonText, modalTitle, modalCon
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">{modalTitle}</h2>
+            <h3 id="transition-modal-title">{modalTitle}</h3>
             <div id="transition-modal-description">
-              { ReactHtmlParser(modalContentHTML) }
             </div>
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

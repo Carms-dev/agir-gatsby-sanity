@@ -6,16 +6,16 @@ import CloseIcon from '@material-ui/icons/Close';
 import { IconButton } from '@material-ui/core';
 
 
-export default function AnnouncementBar({ announcement }) {
+export default function AnnouncementBar({ title, linkText }) {
   const [open, setOpen] = useState(true)
 
   return (
-    <AnnouncementBarStyles style={ { display: open ? `flex` : `none`, background: announcement.backgroundColor } }>
-      <p className="mr-2">{announcement.announcementTitle}</p>
-      <TransitionsModal 
-        modalButtonText={announcement.announcementLinkText} 
-        modalTitle={announcement.announcementTitle} 
-        modalContentHTML={announcement.announcementPopup } />
+    <AnnouncementBarStyles style={{display: open ? `flex` : `none`}}>
+      <p>{title}</p>
+      {linkText && <TransitionsModal 
+        modalButtonText={linkText} 
+        modalTitle={title} 
+        modalContentHTML={`some content`} />}
 
       <IconButton
         edge="start"
@@ -29,6 +29,8 @@ export default function AnnouncementBar({ announcement }) {
 }
 
 const AnnouncementBarStyles = styled.div`
+  display: flex;
+  align-items: center;
   background: var(--primary-light);
   position: relative;
   text-align: center;
