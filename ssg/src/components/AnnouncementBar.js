@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { IconButton } from '@material-ui/core';
 
 
-export default function AnnouncementBar({ title, linkText }) {
+export default function AnnouncementBar({ title, linkText, modalBlock }) {
   const [open, setOpen] = useState(true)
 
   return (
@@ -15,7 +15,7 @@ export default function AnnouncementBar({ title, linkText }) {
       {linkText && <TransitionsModal 
         modalButtonText={linkText} 
         modalTitle={title} 
-        modalContentHTML={`some content`} />}
+        modalBlock={modalBlock} />}
 
       <IconButton
         edge="start"
