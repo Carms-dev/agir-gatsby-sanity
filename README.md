@@ -11,11 +11,12 @@
 * [Sanity](https://www.sanity.io/)
 * Netlify
 
+```
     .
     ├── ssg <-- Gatsby Static Site Generator
     ├── studio <-- Sanity CMS
     └── README.md
-
+```
 ## Set up Sanity Studio
 
 1. Install Sanity CLI tooling: [quick start](https://www.sanity.io/docs/getting-started-with-sanity-cli)
