@@ -18,6 +18,7 @@ import navigation from './documents/navigation'
 import siteSettings from './documents/siteSettings'
 
 import partner from './documents/partner'
+import announcement from './documents/announcement'
 
 // import reusable components to schema
 import locale from './components/locale'
@@ -28,7 +29,7 @@ import internalLink from './components/internalLink'
 import { homeSections, aboutSections, getSupportSections, contactSections, getInvolvedSections, donateSections } from './objects/sections'
 import { hero, heroAlt } from './objects/hero'
 import pageLink from './objects/pageLink'
-import { localeString, localeText } from './objects/localizedFields'
+import { localePortableText, localeString, localeText } from './objects/localizedFields'
 import portableText from './components/portableText'
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -62,10 +63,12 @@ export default createSchema({
     
     // Objects
     partner,
+    announcement,
 
     // localizedFields
     localeString,
     localeText,
+    localePortableText,
 
     // Components
     imageBlock,

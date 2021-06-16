@@ -3,12 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
-import ReactHtmlParser from 'react-html-parser';
+import { Button } from '@material-ui/core';
+import BlockContent from '@sanity/block-content-to-react'
 
 const useStyles = makeStyles(() => ({
   btnModal: {
     color: `var(--primary-alt)`,
     textDecoration: `underline`,
+    margin: `0 1rem`,
+    textTransform: `unset`,
+    padding: `0`,
   },
   modal: {
     display: 'flex',
@@ -17,12 +21,13 @@ const useStyles = makeStyles(() => ({
   },
   paper: {
     backgroundColor: `var(--off-white)`,
-    border: '2px solid #000',
+    border: '2px solid var(--darker)',
     padding: `20px`,
     margin: `20px`,
-    '& h2': {
+    borderRadius: `4px`,
+    '& h3': {
       fontSize: `1.75rem`,
-      marginBottom: `12px`,
+      marginBottom: `1rem`,
     },
     '& p': {
       marginBottom: `6px`,
@@ -33,7 +38,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export default function TransitionsModal({ modalButtonText, modalTitle, modalContentHTML }) {
+export default function TransitionsModal({ modalButtonText, modalTitle, modalBlock }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -45,11 +50,21 @@ export default function TransitionsModal({ modalButtonText, modalTitle, modalCon
     setOpen(false);
   };
 
+  const serializers = {
+    types: {
+      code: (props) => (
+        <pre data-language={props.node.language}>
+          <code>{props.node.code}</code>
+        </pre>
+      ),
+    },
+  }
+
   return (
-    <div>
-      <button type="button" onClick={handleOpen} className={classes.btnModal}>
+    <>
+      <Button variant="text" onClick={handleOpen} className={classes.btnModal}>
         {modalButtonText}
-      </button>
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -64,13 +79,13 @@ export default function TransitionsModal({ modalButtonText, modalTitle, modalCon
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">{modalTitle}</h2>
+            <h3 id="transition-modal-title">{modalTitle}</h3>
             <div id="transition-modal-description">
-              { ReactHtmlParser(modalContentHTML) }
+              <BlockContent blocks={modalBlock} />
             </div>
           </div>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 }

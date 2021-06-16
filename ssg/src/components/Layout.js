@@ -12,7 +12,7 @@ const Layout = ({ language, noHeader, children }) => (
   <>
     <GlobalStyles />
     <Typography />
-    <AnnouncementBars />
+    <AnnouncementBars language={language} />
 
     {/* Do not display Header on landing page */}
     {!noHeader && <Header language={language} />}

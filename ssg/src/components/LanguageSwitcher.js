@@ -27,7 +27,6 @@ export default function LanguageSwitcher({ language }) {
       className={classes.formControl}
     >
       <Select
-        disableUnderline
         value={language}
         onChange={handleChange}
         IconComponent={LanguageIcon}
