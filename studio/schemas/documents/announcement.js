@@ -47,10 +47,11 @@ export default {
   preview: {
     select: {
       title: 'title',
+      isActive: 'isActive'
     },
-    prepare: ({ title }) => {
+    prepare: ({ title, isActive }) => {
       return {
-        title: title.en,
+        title: `${isActive ? '🟢' : '🔴'} ${title.en}`,
       }
     }
   }
