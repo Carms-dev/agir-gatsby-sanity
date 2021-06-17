@@ -31,6 +31,7 @@ import { hero, heroAlt } from './objects/hero'
 import pageLink from './objects/pageLink'
 import { localePortableText, localeString, localeText } from './objects/localizedFields'
 import portableText from './components/portableText'
+import testimonial from './documents/testimonial'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -63,6 +64,7 @@ export default createSchema({
     
     // Objects
     partner,
+    testimonial,
     announcement,
 
     // localizedFields
